@@ -150,3 +150,17 @@ class DaftarButton extends StatelessWidget {
     );
   }
 }
+
+class BackButtonWithWhiteBackgroundColor extends StatelessWidget {
+  const BackButtonWithWhiteBackgroundColor({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton.filled(
+      style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.white),),
+      onPressed: () {},
+      color: Colors.black,
+      icon: Icon(Icons.arrow_back_rounded),
+    );
+  }
+}

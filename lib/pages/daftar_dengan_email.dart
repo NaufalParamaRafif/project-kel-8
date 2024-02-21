@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_kelompok_8/components/my_buttons.dart';
+import 'package:project_kelompok_8/components/my_input_text.dart';
 
 class DaftarEmail extends StatelessWidget {
   const DaftarEmail({super.key});
@@ -30,27 +31,58 @@ class DaftarEmail extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height * 15 / 100,
+              height: MediaQuery.of(context).size.height * 25 / 100,
             ),
             Container(
-              height: MediaQuery.of(context).size.height * 85 / 100,
+              height: MediaQuery.of(context).size.height * 75 / 100,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 40),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 40),
                 child: Column(
                   children: [
                     Text(
                       'Daftar',
                       style: TextStyle(
-                        fontSize: 35,
-                        color: Color.fromARGB(255, 55, 130, 94),
-                        fontWeight: FontWeight.w700),
+                          fontSize: 35,
+                          color: Color.fromARGB(255, 55, 130, 94),
+                          fontWeight: FontWeight.w700),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 4 / 100,
+                    ),
+                    inputEmail(),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 4 / 100,
+                    ),
+                    inputPassword(),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 4 / 100,
                     ),
                     DaftarButton(),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 4 / 100,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Sudah punya akun?',
+                          style: TextStyle(color: Colors.black, fontSize: 19),
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          'Masuk',
+                          style: TextStyle(color: Colors.blue, fontSize: 19),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),

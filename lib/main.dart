@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:project_kelompok_8/pages/daftar_dengan_email.dart';
+import 'package:project_kelompok_8/pages/seluruh_kategori.dart';
 
 void main() {
-  runApp(const MaterialApp(
-    title: 'Apalah',
-    home: DaftarEmail(),
-  ),);
+  runApp(
+    const MaterialApp(
+      title: 'Toko Barbek',
+      home: SeluruhKategoriPage(),
+      debugShowCheckedModeBanner: false,
+    ),
+  );
 }
