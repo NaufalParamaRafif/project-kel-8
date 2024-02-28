@@ -143,7 +143,44 @@ class DaftarButton extends StatelessWidget {
           ),
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 8),
-            child: Center(child: Text('Daftar', style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500),)),
+            child: Center(
+                child: Text(
+              'Daftar',
+              style: TextStyle(
+                  fontSize: 22,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500),
+            )),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class KirimButton extends StatelessWidget {
+  const KirimButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {},
+      child: Ink(
+        child: Container(
+          decoration: BoxDecoration(
+            color: Color.fromARGB(255, 55, 130, 94),
+            borderRadius: BorderRadius.all(Radius.circular(8)),
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 8),
+            child: Center(
+                child: Text(
+              'Kirim',
+              style: TextStyle(
+                  fontSize: 22,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500),
+            )),
           ),
         ),
       ),
@@ -157,7 +194,9 @@ class BackButtonWithWhiteBackgroundColor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton.filled(
-      style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.white),),
+      style: ButtonStyle(
+        backgroundColor: MaterialStatePropertyAll(Colors.white),
+      ),
       onPressed: () {},
       color: Colors.black,
       icon: Icon(Icons.arrow_back_rounded),
