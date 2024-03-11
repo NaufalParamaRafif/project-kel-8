@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:forum_jasa/notifications.dart';
-import 'package:forum_jasa/profile_screen.dart';
+import 'package:project_kelompok_8/pages/login_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,7 +11,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Color.fromARGB(255, 255, 255, 255),
       ),
-      home: Notifications(),
+      home: LoginPage(),
     );
   }
 }

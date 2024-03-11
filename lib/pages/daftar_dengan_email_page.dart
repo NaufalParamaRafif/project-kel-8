@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:project_kelompok_8/components/my_buttons.dart';
 import 'package:project_kelompok_8/components/my_input_text.dart';
+import 'package:project_kelompok_8/pages/login_page.dart';
 
-class DaftarEmail extends StatelessWidget {
-  const DaftarEmail({super.key});
+class DaftarDenganEmailPage extends StatelessWidget {
+  const DaftarDenganEmailPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,9 @@ class DaftarEmail extends StatelessWidget {
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage()),);
+            },
             icon: Icon(
               Icons.arrow_back_rounded,
               size: 40,
@@ -41,8 +44,7 @@ class DaftarEmail extends StatelessWidget {
                 borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
               ),
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 40),
+                padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 40),
                 child: Column(
                   children: [
                     Text(
@@ -55,11 +57,15 @@ class DaftarEmail extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 4 / 100,
                     ),
-                    inputEmail(),
+                    InputUsername(),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 4 / 100,
                     ),
-                    inputPassword(),
+                    InputEmail(),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 4 / 100,
+                    ),
+                    InputPassword(),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 4 / 100,
                     ),

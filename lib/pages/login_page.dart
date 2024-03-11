@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_kelompok_8/components/my_buttons.dart';
+import 'package:project_kelompok_8/pages/daftar_dengan_email_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -51,12 +52,14 @@ class LoginPage extends StatelessWidget {
                           'Belum punya akun?',
                           style: TextStyle(color: Colors.white, fontSize: 19),
                         ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          'Daftar',
-                          style: TextStyle(color: Colors.blue, fontSize: 19),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const DaftarDenganEmailPage()),);
+                          },
+                          child: Text(
+                            'Daftar',
+                            style: TextStyle(color: Colors.blue, fontSize: 19),
+                          ),
                         ),
                       ],
                     ),
