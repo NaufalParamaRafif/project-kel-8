@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ProfileScreenPage extends StatelessWidget {
+  static String nameRoute = '/profile';
   const ProfileScreenPage({super.key});
 
   @override

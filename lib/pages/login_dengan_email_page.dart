@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import './../components/my_buttons.dart';
 import './../components/my_input_text.dart';
-import './../pages/login_page.dart';
 
 class LoginDenganEmailPage extends StatelessWidget {
+  static String nameRoute = '/login/email';
   const LoginDenganEmailPage({super.key});
 
   @override
@@ -18,7 +18,7 @@ class LoginDenganEmailPage extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: IconButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage()),);
+              Navigator.pop(context);
             },
             icon: Icon(
               Icons.arrow_back_rounded,

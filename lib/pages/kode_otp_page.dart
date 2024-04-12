@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import './../components/my_buttons.dart';
-import './daftar_dengan_email_page.dart';
 
 class KodeOTPPage extends StatelessWidget {
+  static String nameRoute = '/kodeotp';
   const KodeOTPPage({super.key});
 
   @override
@@ -18,11 +18,7 @@ class KodeOTPPage extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: IconButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const DaftarDenganEmailPage()),
-              );
+              Navigator.pop(context);
             },
             icon: Icon(
               Icons.arrow_back_rounded,

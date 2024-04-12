@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import './../components/my_buttons.dart';
 import './../components/my_input_text.dart';
-import './login_page.dart';
 
 class DaftarDenganEmailPage extends StatelessWidget {
+  static String nameRoute = '/daftar/email';
   const DaftarDenganEmailPage({super.key});
 
   @override
@@ -18,7 +18,7 @@ class DaftarDenganEmailPage extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: IconButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage()),);
+              Navigator.pop(context);
             },
             icon: Icon(
               Icons.arrow_back_rounded,
@@ -50,9 +50,9 @@ class DaftarDenganEmailPage extends StatelessWidget {
                     Text(
                       'Daftar',
                       style: TextStyle(
-                          fontSize: 35,
-                          color: Color.fromARGB(255, 55, 130, 94),
-                          fontWeight: FontWeight.w700),
+                        fontSize: 35,
+                        color: Color.fromARGB(255, 55, 130, 94),
+                        fontWeight: FontWeight.w700),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 4 / 100,

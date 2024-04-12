@@ -3,6 +3,7 @@ import './../components/my_buttons.dart';
 import './../pages/daftar_dengan_email_page.dart';
 
 class LoginPage extends StatelessWidget {
+  static String nameRoute = '/login';
   const LoginPage({super.key});
 
   @override

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SeluruhKategoriPage extends StatelessWidget {
+  static String nameRoute = '/seluruhkategori';
   const SeluruhKategoriPage({super.key});
 
   @override

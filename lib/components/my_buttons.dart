@@ -200,7 +200,9 @@ class MasukButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(context, KodeOTPPage.nameRoute);
+      },
       child: Ink(
         child: Container(
           decoration: BoxDecoration(
@@ -213,9 +215,9 @@ class MasukButton extends StatelessWidget {
                 child: Text(
               'Masuk',
               style: TextStyle(
-                  fontSize: 22,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500),
+                fontSize: 22,
+                color: Colors.white,
+                fontWeight: FontWeight.w500),
             )),
           ),
         ),

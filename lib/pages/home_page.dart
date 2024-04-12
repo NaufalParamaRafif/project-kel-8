@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import './../components/my_recommended_card.dart';
 import '../components/my_card.dart';
+import './notifications_page.dart';
 
 class HomePage extends StatefulWidget {
+  static String nameRoute = '/homepage';
   const HomePage({Key? key});
 
   @override
@@ -44,7 +46,11 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         actions: [
-          Icon(Icons.notifications, color: Colors.white,),
+          IconButton(onPressed: () {
+              Navigator.pushNamed(context, NotificationsPage.nameRoute);
+            }, 
+            icon: Icon(Icons.notifications, color: Colors.white,),
+          ),
           SizedBox(width: 20,),
         ],
       ),
