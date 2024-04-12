@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:project_kelompok_8/components/my_buttons.dart';
-import 'package:project_kelompok_8/components/my_input_text.dart';
-import 'package:project_kelompok_8/pages/login_page.dart';
+import './../components/my_buttons.dart';
+import './../components/my_input_text.dart';
+import './../pages/login_page.dart';
 
 class LoginDenganEmailPage extends StatelessWidget {
   const LoginDenganEmailPage({super.key});

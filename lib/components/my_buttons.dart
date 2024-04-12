@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:project_kelompok_8/pages/kode_otp_page.dart';
-import 'package:project_kelompok_8/pages/login_dengan_email_page.dart';
+import './../pages/kode_otp_page.dart';
+import './../pages/login_dengan_email_page.dart';
 
 class TelephoneButton extends StatelessWidget {
   const TelephoneButton({super.key});

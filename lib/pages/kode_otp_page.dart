@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:project_kelompok_8/components/my_buttons.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
-import 'package:project_kelompok_8/pages/daftar_dengan_email_page.dart';
+import './../components/my_buttons.dart';
+import './daftar_dengan_email_page.dart';
 
 class KodeOTPPage extends StatelessWidget {
   const KodeOTPPage({super.key});

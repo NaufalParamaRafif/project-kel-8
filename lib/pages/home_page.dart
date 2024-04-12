@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_kelompok_8/components/my_recommended_card.dart';
-
+import './../components/my_recommended_card.dart';
 import '../components/my_card.dart';
 
 class HomePage extends StatefulWidget {
