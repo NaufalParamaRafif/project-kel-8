@@ -46,7 +46,7 @@ class Default_JasaCardState extends State<DefaultJasaCard> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Jasa freelancer membuat web menggunakan flutter", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 12), overflow: TextOverflow.ellipsis, maxLines: 3,),
+                    Text("Jasa freelancer membuat web menggunakan flutter", style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12), overflow: TextOverflow.ellipsis, maxLines: 3,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
