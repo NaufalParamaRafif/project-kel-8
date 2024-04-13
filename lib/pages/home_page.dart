@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import './../components/my_recommended_card.dart';
 import '../components/my_card.dart';
@@ -13,7 +15,33 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final TextEditingController _searchController = TextEditingController();
-  
+  final List<Map<String, String>> jasaDefault = [
+    {
+      'thumbnail' : "images/fotoorg.jpg",
+      'judul' : "Jasa Pembuatan Web Menggunakan MERN Stack, dan Flutter sebagai Aplikasi untuk END USERS",
+      'harga' : "25.999",
+      'gambarProfilePenjual' : 'images/kodok.jpg',
+      'namaPenjual' : "Osama bin Laden",
+      'deskripsiDetailJasa' : 'Adalah sebuah jasa yang menawarkan Omaga ges, mantap sekali wajib dicoba'
+    },
+    {
+      'thumbnail' : "images/fotoorg.jpg",
+      'judul' : "Jasa Pembuatan Web Menggunakan MERN Stack, dan Flutter sebagai Aplikasi untuk END USERS",
+      'harga' : "25.999",
+      'gambarProfilePenjual' : 'images/kodok.jpg',
+      'namaPenjual' : "Osama bin Laden",
+      'deskripsiDetailJasa' : 'Adalah sebuah jasa yang menawarkan Omaga ges, mantap sekali wajib dicoba'
+    },
+    {
+      'thumbnail' : "images/fotoorg.jpg",
+      'judul' : "Jasa Pembuatan Web Menggunakan MERN Stack, dan Flutter sebagai Aplikasi untuk END USERS",
+      'harga' : "25.999",
+      'gambarProfilePenjual' : 'images/kodok.jpg',
+      'namaPenjual' : "Osama bin Laden",
+      'deskripsiDetailJasa' : 'Adalah sebuah jasa yang menawarkan Omaga ges, mantap sekali wajib dicoba'
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -193,34 +221,55 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.black,
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  DefaultJasaCard(),
-                  DefaultJasaCard(),
-                ],
-              ),
-              SizedBox(height: 20,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  DefaultJasaCard(),
-                  DefaultJasaCard(),
-                ],
-              ),
-              SizedBox(height: 20,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  DefaultJasaCard(),
-                  DefaultJasaCard(),
-                ],
-              ),
-              SizedBox(height: 20,),
+              ...getDefaultJasaCard(jasaDefault),
             ],
           ),
         ],
       ),
     );
   }
+}
+
+List<Widget> getDefaultJasaCard(List jasaDefault) {
+  int rowCount = (jasaDefault.length / 2).ceil();
+
+  List<Widget> allJasaDefaultWidget = [];
+
+  // Iterate over each row
+  for (int rowIndex = 0; rowIndex < rowCount; rowIndex++) {
+    List<Widget> rowWidgets = [];
+
+    int start = rowIndex * 2;
+    int end = min(start + 2, jasaDefault.length);
+
+    for (int index = start; index < end; index++) {
+      rowWidgets.add(DefaultJasaCard(
+        thumbnail: jasaDefault[index]['thumbnail'],
+        judul: jasaDefault[index]['judul'],
+        harga: jasaDefault[index]['harga'],
+        gambarProfilePenjual: jasaDefault[index]['gambarProfilePenjual'],
+        namaPenjual: jasaDefault[index]['namaPenjual'],
+        deskripsiDetailJasa: jasaDefault[index]['deskripsiDetailJasa'],
+      ));
+    }
+
+    if (rowWidgets.length == 1) {
+      rowWidgets.add(
+        Container(
+          height: 240,
+          width: 160,
+          color: Colors.transparent,
+        )
+      );
+    }
+
+    allJasaDefaultWidget.add(Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: rowWidgets,
+    ));
+
+    allJasaDefaultWidget.add(SizedBox(height: 20));
+  }
+
+  return allJasaDefaultWidget;
 }

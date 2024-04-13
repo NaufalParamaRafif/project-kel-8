@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
 class PostPage extends StatelessWidget {
-  const PostPage({super.key});
+  static String nameRoute = '/post/page';
+  const PostPage({super.key, required this.thumbnail, required this.judul, required this.harga, required this.gambarProfilePenjual, required this.namaPenjual, required this.deskripsiDetailJasa});
+  final String thumbnail;
+  final String judul;
+  final String harga;
+  final String gambarProfilePenjual;
+  final String namaPenjual;
+  final String deskripsiDetailJasa;
 
   @override
   //tesfsdzfdfhhfd
@@ -10,11 +17,15 @@ class PostPage extends StatelessWidget {
         backgroundColor: Color.fromARGB(255, 255, 255, 255),
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 55, 130, 94),
+          title: Text('Detail Jasa', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),),
+          centerTitle: true,
           leading: IconButton.filled(
             style: ButtonStyle(
               backgroundColor: MaterialStatePropertyAll(Colors.white),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             color: Colors.black,
             icon: Icon(Icons.arrow_back_rounded),
           ),
@@ -31,76 +42,119 @@ class PostPage extends StatelessWidget {
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-        body: Container(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25, vertical: 40),
-            child: Column(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.network(
-                    'https://picsum.photos/seed/904/600',
-                    width: MediaQuery.of(context).size.width,
-                    height: 200,
-                    fit: BoxFit.cover,
+        body: ListView(
+          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset(
+                thumbnail,
+                width: MediaQuery.of(context).size.width,
+                height: 200,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          judul,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: (){},
+                        icon: Icon(
+                          Icons.favorite_border,
+                          color: Colors.black,
+                          size: 28,
+                        ),
+                      )
+                    ],
                   ),
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Title',
-                      style: TextStyle(
-                        fontSize: 28,
+                  SizedBox(height: 10,),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      ClipOval(
+                        child: CircleAvatar(
+                          child: Image(
+                            image: AssetImage(gambarProfilePenjual),
+                            alignment: Alignment.center,
+                            height: double.infinity,
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
-                    ),
-                    Icon(
-                      Icons.favorite_border,
-                      color: Colors.black,
-                      size: 28,
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      child: Icon(
-                        Icons.person,
-                        color: Colors.black,
-                        size: 35,
+                      SizedBox(
+                        width: 10,
                       ),
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 255, 49, 49),
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                      Text(
+                        namaPenjual,
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      'User',
-                      style: TextStyle(
-                        fontSize: 25,
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
-                  child: Text(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed viverra eros. Suspendisse mattis nec orci sit amet luctus. Phasellus.",
-                    style: TextStyle(fontSize: 20),
+                    ],
                   ),
-                )
+                  SizedBox(height: 10,),
+                  Table(
+                    children: [
+                      TableRow(
+                        children: [
+                          TableCell(child: 
+                            Text("Kategori"),
+                          ),
+                          TableCell(child: 
+                            Text("Begadang"),
+                          ),
+                        ]
+                      ),
+                      TableRow(
+                        children: [
+                          TableCell(child: 
+                            Text("Harga"),
+                          ),
+                          TableCell(child: 
+                            Text("Begadang"),
+                          ),
+                        ]
+                      ),
+                      TableRow(
+                        children: [
+                          TableCell(child: 
+                            Text("Perkiraan Waktu Pengerjaan"),
+                          ),
+                          TableCell(child: 
+                            Text("1 Minggu"),
+                          ),
+                        ]
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10,),
+                  Text(
+                    deskripsiDetailJasa,
+                    style: TextStyle(fontSize: 17),
+                    textAlign: TextAlign.justify,
+                  ),
               ],
             ),
           ),
-        ));
+        ],
+      )
+    );
   }
 }

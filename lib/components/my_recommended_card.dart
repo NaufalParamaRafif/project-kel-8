@@ -39,18 +39,14 @@ class _RecommendedJasaCardState extends State<RecommendedJasaCard> {
                 children: [
                   Row(
                     children: [
-                      CircleAvatar(
-                        radius: 20,
-                        backgroundColor: Colors.black54,
-                        child: ClipOval(
-                          child: CircleAvatar(
-                            child: Image(
-                              image: AssetImage('images/fotoorg.jpg'),
-                              alignment: Alignment.center,
-                              height: double.infinity,
-                              width: double.infinity,
-                              fit: BoxFit.cover,
-                            ),
+                      ClipOval(
+                        child: CircleAvatar(
+                          child: Image(
+                            image: AssetImage('images/fotoorg.jpg'),
+                            alignment: Alignment.center,
+                            height: double.infinity,
+                            width: double.infinity,
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
