@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_kelompok_8/pages/home_page.dart';
 import 'package:project_kelompok_8/pages/profile_screen_page.dart';
+import 'package:project_kelompok_8/pages/whitelist_page.dart';
 
 class MainPage extends StatefulWidget {
   static String nameRoute = '/main';
@@ -15,9 +16,7 @@ class _MainPageState extends State<MainPage> {
 
   List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    Text(
-      'Index 2: School',
-    ),
+    WhiteListPage(),
     Text(
       'Index 2: School',
     ),
