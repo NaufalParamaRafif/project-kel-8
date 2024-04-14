@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_kelompok_8/pages/daftar_dengan_email_page.dart';
+import 'package:project_kelompok_8/pages/detail_penjual_page.dart';
 import 'package:project_kelompok_8/pages/kode_otp_page.dart';
 import 'package:project_kelompok_8/pages/login_dengan_email_page.dart';
 import 'package:project_kelompok_8/pages/login_page.dart';

@@ -1,6 +1,5 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:project_kelompok_8/models/jasa_models.dart';
 import './../components/my_recommended_card.dart';
 import '../components/my_card.dart';
 import './notifications_page.dart';
@@ -15,31 +14,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final TextEditingController _searchController = TextEditingController();
-  final List<Map<String, String>> jasaDefault = [
-    {
-      'thumbnail' : "images/fotoorg.jpg",
-      'judul' : "Jasa Pembuatan Web Menggunakan MERN Stack, dan Flutter sebagai Aplikasi untuk END USERS",
-      'harga' : "25.999",
-      'gambarProfilePenjual' : 'images/kodok.jpg',
-      'namaPenjual' : "Osama bin Laden",
-      'deskripsiDetailJasa' : 'Adalah sebuah jasa yang menawarkan Omaga ges, mantap sekali wajib dicoba'
-    },
-    {
-      'thumbnail' : "images/fotoorg.jpg",
-      'judul' : "Jasa Pembuatan Web Menggunakan MERN Stack, dan Flutter sebagai Aplikasi untuk END USERS",
-      'harga' : "25.999",
-      'gambarProfilePenjual' : 'images/kodok.jpg',
-      'namaPenjual' : "Osama bin Laden",
-      'deskripsiDetailJasa' : 'Adalah sebuah jasa yang menawarkan Omaga ges, mantap sekali wajib dicoba'
-    },
-    {
-      'thumbnail' : "images/fotoorg.jpg",
-      'judul' : "Jasa Pembuatan Web Menggunakan MERN Stack, dan Flutter sebagai Aplikasi untuk END USERS",
-      'harga' : "25.999",
-      'gambarProfilePenjual' : 'images/kodok.jpg',
-      'namaPenjual' : "Osama bin Laden",
-      'deskripsiDetailJasa' : 'Adalah sebuah jasa yang menawarkan Omaga ges, mantap sekali wajib dicoba'
-    },
+  final List<Jasa> jasaDefault = [
+    Jasa(thumbnail: "https://picsum.photos/300", judul: "Jasa Pembuatan Web Menggunakan MERN Stack, dan Flutter sebagai Aplikasi untuk END USERS", harga: "25.999", gambarProfilePenjual: 'https://picsum.photos/113', namaPenjual: "Osama bin Laden", deskripsiDetailJasa: 'Adalah sebuah jasa yang menawarkan Omaga ges, mantap sekali wajib dicoba'),
+    Jasa(thumbnail: "https://picsum.photos/301", judul: "Jasa Menerjemahkan Bahasa China ke Indonesia", harga: "25.999", gambarProfilePenjual: 'https://picsum.photos/111', namaPenjual: "Osama bin Laden", deskripsiDetailJasa: 'Adalah sebuah jasa yang menawarkan Omaga ges, mantap sekali wajib dicoba'),
+    Jasa(thumbnail: "https://picsum.photos/302", judul: "Jasa Membuat Logo", harga: "25.999", gambarProfilePenjual: 'https://picsum.photos/300', namaPenjual: "Kicikiwir Bro", deskripsiDetailJasa: 'Adalah sebuah jasa yang menawarkan Omaga ges, mantap sekali wajib dicoba'),
   ];
 
   @override
@@ -51,27 +29,32 @@ class _HomePageState extends State<HomePage> {
             color: Colors.green,
           ),
         ),
-        title: Container(
-          padding: EdgeInsets.symmetric(horizontal: 15),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(8.0)),
-            color: Colors.white, 
-          ),
-          width: 350,
-          child: TextField(
-            controller: _searchController,
-            style: const TextStyle(color: Colors.black),
-            cursorColor: Colors.black,
-            decoration: const InputDecoration(
-              hintText: 'Search...',
-              icon: Icon(Icons.search),
-              iconColor: Colors.grey,
-              hintStyle: TextStyle(color: Color.fromARGB(137, 44, 44, 44)),
-              border: InputBorder.none,
+        title: Row(
+          children: [
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                  color: Colors.white, 
+                ),
+                child: TextField(
+                  controller: _searchController,
+                  style: const TextStyle(color: Colors.black),
+                  cursorColor: Colors.black,
+                  decoration: const InputDecoration(
+                    hintText: 'Search...',
+                    icon: Icon(Icons.search),
+                    iconColor: Colors.grey,
+                    hintStyle: TextStyle(color: Color.fromARGB(137, 44, 44, 44)),
+                    border: InputBorder.none,
+                  ),
+                  onChanged: (value) {
+                  },
+                ),
+              ),
             ),
-            onChanged: (value) {
-            },
-          ),
+          ],
         ),
         actions: [
           IconButton(onPressed: () {
@@ -108,84 +91,92 @@ class _HomePageState extends State<HomePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Column(
-                children: [
-                  Container(
-                    height: 80,
-                    width: 80,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.grey,
+              Flexible(
+                child: Column(
+                  children: [
+                    Container(
+                      clipBehavior: Clip.antiAlias,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.grey,
+                      ),
+                      child: Image.network("https://picsum.photos/200",),
                     ),
-                  ),
-                  Text(
-                    "Mobil",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w200,
-                      color: Colors.black,
+                    Text(
+                      "Mobil",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w200,
+                        color: Colors.black,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               SizedBox(width: 5),
-              Column(
-                children: [
-                  Container(
-                    height: 80,
-                    width: 80,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.grey,
+              Flexible(
+                child: Column(
+                  children: [
+                    Container(
+                      clipBehavior: Clip.antiAlias,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.grey,
+                      ),
+                      child: Image.network("https://picsum.photos/200",),
                     ),
-                  ),
-                  Text(
-                    "Motor",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w200,
-                      color: Colors.black,
+                    Text(
+                      "Motor",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w200,
+                        color: Colors.black,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               SizedBox(width: 5),
-              Column(
-                children: [
-                  Container(
-                    height: 80,
-                    width: 80,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.grey,
+              Flexible(
+                child: Column(
+                  children: [
+                    Container(
+                      clipBehavior: Clip.antiAlias,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.grey,
+                      ),
+                      child: Image.network("https://picsum.photos/200",),
                     ),
-                  ),
-                  Text(
-                    "Property",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w200,
-                      color: Colors.black,
+                    Text(
+                      "Property",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w200,
+                        color: Colors.black,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               SizedBox(width: 5),
-              Column(
-                children: [
-                  Container(
-                    height: 80,
-                    width: 80,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.grey,
+              Flexible(
+                child: Column(
+                  children: [
+                    Container(
+                      clipBehavior: Clip.antiAlias,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.grey,
+                      ),
+                      child: Image.network("https://picsum.photos/201",),
                     ),
-                  ),
-                  Text(
-                    "Elektronik",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w200,
-                      color: Colors.black,
+                    Text(
+                      "Elektronik",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w200,
+                        color: Colors.black,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
@@ -221,55 +212,24 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.black,
                 ),
               ),
-              ...getDefaultJasaCard(jasaDefault),
+              GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: jasaDefault.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 6/9,
+                  crossAxisSpacing: 15,
+                  mainAxisSpacing: 15,
+                ),
+                itemBuilder: (context, index) 
+                  => DefaultJasaCard(jasa: jasaDefault[index])
+                ,
+              ),
             ],
           ),
         ],
       ),
     );
   }
-}
-
-List<Widget> getDefaultJasaCard(List jasaDefault) {
-  int rowCount = (jasaDefault.length / 2).ceil();
-
-  List<Widget> allJasaDefaultWidget = [];
-
-  // Iterate over each row
-  for (int rowIndex = 0; rowIndex < rowCount; rowIndex++) {
-    List<Widget> rowWidgets = [];
-
-    int start = rowIndex * 2;
-    int end = min(start + 2, jasaDefault.length);
-
-    for (int index = start; index < end; index++) {
-      rowWidgets.add(DefaultJasaCard(
-        thumbnail: jasaDefault[index]['thumbnail'],
-        judul: jasaDefault[index]['judul'],
-        harga: jasaDefault[index]['harga'],
-        gambarProfilePenjual: jasaDefault[index]['gambarProfilePenjual'],
-        namaPenjual: jasaDefault[index]['namaPenjual'],
-        deskripsiDetailJasa: jasaDefault[index]['deskripsiDetailJasa'],
-      ));
-    }
-
-    if (rowWidgets.length == 1) {
-      rowWidgets.add(
-        Container(
-          height: 240,
-          width: 160,
-          color: Colors.transparent,
-        )
-      );
-    }
-
-    allJasaDefaultWidget.add(Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: rowWidgets,
-    ));
-
-    allJasaDefaultWidget.add(SizedBox(height: 20));
-  }
-
-  return allJasaDefaultWidget;
 }

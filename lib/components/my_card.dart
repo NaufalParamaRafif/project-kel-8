@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:project_kelompok_8/pages/post_page.dart';
 
+import './../models/jasa_models.dart';
+
 class DefaultJasaCard extends StatefulWidget {
-  const DefaultJasaCard({super.key, required this.thumbnail, required this.judul, required this.harga, required this.gambarProfilePenjual, required this.namaPenjual, required this.deskripsiDetailJasa});
-  final String thumbnail;
-  final String judul;
-  final String harga;
-  final String gambarProfilePenjual;
-  final String namaPenjual;
-  final String deskripsiDetailJasa;
+  const DefaultJasaCard({super.key, required this.jasa});
+  final Jasa jasa;
 
   @override
   State<DefaultJasaCard> createState() => Default_JasaCardState();
@@ -20,8 +17,9 @@ class Default_JasaCardState extends State<DefaultJasaCard> {
   // void initState() {
   //   // TODO: implement initState
   //   super.initState();
-  //   String thumbnaild = widget.thumbnail;
+  //   Jasa jasa = widget.jasa;
   // }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,7 +31,7 @@ class Default_JasaCardState extends State<DefaultJasaCard> {
         color: Colors.white,
         child: InkWell(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => PostPage(thumbnail: widget.thumbnail, judul: widget.judul, harga: widget.harga, gambarProfilePenjual: widget.gambarProfilePenjual, namaPenjual: widget.namaPenjual, deskripsiDetailJasa: widget.deskripsiDetailJasa)));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => PostPage(thumbnail: widget.jasa.thumbnail, judul: widget.jasa.judul, harga: widget.jasa.harga, gambarProfilePenjual: widget.jasa.gambarProfilePenjual, namaPenjual: widget.jasa.namaPenjual, deskripsiDetailJasa: widget.jasa.deskripsiDetailJasa)));
           },
           child: Padding(
             padding: const EdgeInsets.all(15.0),
@@ -50,11 +48,15 @@ class Default_JasaCardState extends State<DefaultJasaCard> {
                     decoration:  BoxDecoration(
                       borderRadius: BorderRadius.circular(8) // Adjust the radius as needed
                     ),
-                    child: Image.asset(
-                      widget.thumbnail,
-                      width: 125,
-                      height: 120,
-                      fit: BoxFit.cover,
+                    child: LayoutBuilder(
+                      builder: (context, size) {
+                        return Image.network(
+                          widget.jasa.thumbnail,
+                          width: size.maxWidth,
+                          height: size.maxWidth,
+                          fit: BoxFit.cover,
+                        );
+                      }
                     ),
                   ),
                 ),
@@ -62,13 +64,14 @@ class Default_JasaCardState extends State<DefaultJasaCard> {
                 Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(widget.judul, style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12), overflow: TextOverflow.ellipsis, maxLines: 3,),
+                      Text(widget.jasa.judul, style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12), overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.start,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text("from ", style: TextStyle(color: Colors.black54, fontSize: 13),),
-                          Text(widget.harga, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),),
+                          Text(widget.jasa.harga, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),),
                         ],
                       ),
                     ],

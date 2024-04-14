@@ -25,8 +25,8 @@ class _RecommendedJasaCardState extends State<RecommendedJasaCard> {
               decoration:  BoxDecoration(
                 borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
               ),
-              child: Image.asset(
-                'images/fotoorg.jpg',
+              child: Image.network(
+                'https://picsum.photos/564',
                 width: 280,
                 height: 140,
                 fit: BoxFit.cover,
@@ -42,7 +42,7 @@ class _RecommendedJasaCardState extends State<RecommendedJasaCard> {
                       ClipOval(
                         child: CircleAvatar(
                           child: Image(
-                            image: AssetImage('images/fotoorg.jpg'),
+                            image: NetworkImage('https://picsum.photos/69'),
                             alignment: Alignment.center,
                             height: double.infinity,
                             width: double.infinity,

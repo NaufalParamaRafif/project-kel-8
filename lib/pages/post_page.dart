@@ -30,24 +30,21 @@ class PostPage extends StatelessWidget {
             icon: Icon(Icons.arrow_back_rounded),
           ),
         ),
-        floatingActionButton: Padding(
-          padding: EdgeInsets.only(bottom: 100),
-          child: FloatingActionButton(
-            onPressed: () {},
-            child: Icon(
-              Icons.comment,
-              color: Colors.white,
-            ),
-            backgroundColor: Color.fromARGB(255, 55, 130, 94),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(
+            Icons.comment,
+            color: Colors.white,
           ),
+          tooltip: "Chat Penjual Jasa",
+          backgroundColor: Color.fromARGB(255, 55, 130, 94),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
         body: ListView(
           padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
+              child: Image.network(
                 thumbnail,
                 width: MediaQuery.of(context).size.width,
                 height: 200,
@@ -90,7 +87,7 @@ class PostPage extends StatelessWidget {
                       ClipOval(
                         child: CircleAvatar(
                           child: Image(
-                            image: AssetImage(gambarProfilePenjual),
+                            image: NetworkImage(gambarProfilePenjual),
                             alignment: Alignment.center,
                             height: double.infinity,
                             width: double.infinity,

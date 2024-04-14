@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:project_kelompok_8/pages/home_page.dart';
-import 'package:project_kelompok_8/pages/profile_screen_page.dart';
-import 'package:project_kelompok_8/pages/whitelist_page.dart';
+import './home_page.dart';
+import './profile_screen_page.dart';
+import './wishlist_page.dart';
+import './detail_penjual_page.dart';
+import './categories_page.dart';
 
 class MainPage extends StatefulWidget {
   static String nameRoute = '/main';
@@ -16,13 +18,9 @@ class _MainPageState extends State<MainPage> {
 
   List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    WhiteListPage(),
-    Text(
-      'Index 2: School',
-    ),
-    Text(
-      'Index 2: School',
-    ),
+    WishListPage(),
+    CategoriesPage(),
+    DetailPenjualPage(),
     ProfileScreenPage(),
   ];
 
@@ -46,7 +44,7 @@ class _MainPageState extends State<MainPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
-            label: 'Whitelist',
+            label: 'Wishlist',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.category),
