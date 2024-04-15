@@ -14,11 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final TextEditingController _searchController = TextEditingController();
-  final List<Jasa> jasaDefault = [
-    Jasa(thumbnail: "https://picsum.photos/300", judul: "Jasa Pembuatan Web Menggunakan MERN Stack, dan Flutter sebagai Aplikasi untuk END USERS", harga: "25.999", gambarProfilePenjual: 'https://picsum.photos/113', namaPenjual: "Osama bin Laden", deskripsiDetailJasa: 'Adalah sebuah jasa yang menawarkan Omaga ges, mantap sekali wajib dicoba'),
-    Jasa(thumbnail: "https://picsum.photos/301", judul: "Jasa Menerjemahkan Bahasa China ke Indonesia", harga: "25.999", gambarProfilePenjual: 'https://picsum.photos/111', namaPenjual: "Osama bin Laden", deskripsiDetailJasa: 'Adalah sebuah jasa yang menawarkan Omaga ges, mantap sekali wajib dicoba'),
-    Jasa(thumbnail: "https://picsum.photos/302", judul: "Jasa Membuat Logo", harga: "25.999", gambarProfilePenjual: 'https://picsum.photos/300', namaPenjual: "Kicikiwir Bro", deskripsiDetailJasa: 'Adalah sebuah jasa yang menawarkan Omaga ges, mantap sekali wajib dicoba'),
-  ];
+  final List<Jasa> jasaDefault = Jasa.getAllJasa();
 
   @override
   Widget build(BuildContext context) {

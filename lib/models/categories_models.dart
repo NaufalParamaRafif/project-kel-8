@@ -1,49 +1,67 @@
 class Categories {
-  List<Map<String, String>> listCategory = [
+  List<Map<String, dynamic>> listCategory = [
     {
+      'id' : 1,
       'image' : 'https://picsum.photos/201',
-      'title' : 'Desain Grafis',
-      'subtitle' : 'Mencakup logo, brosur, poster, infografis, dan lainnya.',
+      'name' : 'Desain Grafis',
+      'caption' : 'Mencakup logo, brosur, poster, infografis, dan lainnya.',
+      'slug': 'desain-grafis',
     },
     {
+      'id' : 2,
       'image' : 'https://picsum.photos/202',
-      'title' : 'Pengembangan Web',
-      'subtitle' : 'Membuat dan memelihara situs web atau aplikasi web.'
+      'name' : 'Pengembangan Web',
+      'caption' : 'Membuat dan memelihara situs web atau aplikasi web.',
+      'slug': 'pengembangan-web',
     },
     {
+      'id' : 2,
       'image' : 'https://picsum.photos/203',
-      'title' : 'Pengembangan Perangkat Lunak',
-      'subtitle' : 'Membuat perangkat lunak atau aplikasi untuk berbagai platform.'
+      'name' : 'Pengembangan Perangkat Lunak',
+      'caption' : 'Membuat perangkat lunak atau aplikasi untuk berbagai platform.',
+      'slug': 'pengembangan-perangkat-lunak',
     },
     {
+      'id' : 3,
       'image' : 'https://picsum.photos/204',
-      'title' : 'Penulisan dan Penyuntingan Konten',
-      'subtitle' : 'Mencakup penulisan artikel, blog, konten web, dan layanan penyuntingan.'
+      'name' : 'Penulisan dan Penyuntingan Konten',
+      'caption' : 'Mencakup penulisan artikel, blog, konten web, dan layanan penyuntingan.',
+      'slug': 'penulisan-dan-penyuntingan-konten',
     },
     {
+      'id' : 4,
       'image' : 'https://picsum.photos/205',
-      'title' : 'Pemasaran Digital',
-      'subtitle' : 'SEO, manajemen media sosial, email marketing, dan lainnya.'
+      'name' : 'Pemasaran Digital',
+      'caption' : 'SEO, manajemen media sosial, email marketing, dan lainnya.',
+      'slug': 'pemasaran-digital',
     },
     {
+      'id' : 5,
       'image' : 'https://picsum.photos/206',
-      'title' : 'Video dan Animasi',
-      'subtitle' : 'Pembuatan dan penyuntingan video, animasi 3D, dan efek visual.'
+      'name' : 'Video dan Animasi',
+      'caption' : 'Pembuatan dan penyuntingan video, animasi 3D, dan efek visual.',
+      'slug': 'video-dan-animasi',
     },
     {
+      'id' : 6,
       'image' : 'https://picsum.photos/207',
-      'title' : 'Musik dan Audio',
-      'subtitle' : 'Penyuntingan audio, penciptaan musik, dan layanan suara off.'
+      'name' : 'Musik dan Audio',
+      'caption' : 'Penyuntingan audio, penciptaan musik, dan layanan suara off.',
+      'slug': 'musik-dan-audio',
     },
     {
+      'id' : 7,
       'image' : 'https://picsum.photos/208',
       'title' : 'Bisnis dan Konsultasi',
-      'subtitle' : 'Perencanaan bisnis, manajemen proyek, penelitian pasar, dan konsultasi lainnya.'
+      'caption' : 'Perencanaan bisnis, manajemen proyek, penelitian pasar, dan konsultasi lainnya.',
+      'slug': 'bisnis-dan-konsultasi',
     },
     {
+      'id' : 8,
       'image' : 'https://picsum.photos/209',
-      'title' : 'Penerjemahan dan Penulisan dalam Bahasa Asing',
-      'subtitle' : 'Penerjemahan dokumen dan penulisan konten dalam berbagai bahasa.'
+      'name' : 'Penerjemahan dan Penulisan dalam Bahasa Asing',
+      'caption' : 'Penerjemahan dokumen dan penulisan konten dalam berbagai bahasa.',
+      'slug': 'penerjemahan-dan-penulisan-dalam-bahasa-asing',
     },
   ];
 }

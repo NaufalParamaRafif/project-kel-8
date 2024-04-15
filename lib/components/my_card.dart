@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
+import 'package:project_kelompok_8/models/penjual_models.dart';
 import 'package:project_kelompok_8/pages/post_page.dart';
 
 import './../models/jasa_models.dart';
@@ -31,7 +32,7 @@ class Default_JasaCardState extends State<DefaultJasaCard> {
         color: Colors.white,
         child: InkWell(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => PostPage(thumbnail: widget.jasa.thumbnail, judul: widget.jasa.judul, harga: widget.jasa.harga, gambarProfilePenjual: widget.jasa.gambarProfilePenjual, namaPenjual: widget.jasa.namaPenjual, deskripsiDetailJasa: widget.jasa.deskripsiDetailJasa)));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => PostPage(thumbnail: widget.jasa.image, judul: widget.jasa.title, harga: widget.jasa.harga, gambarProfilePenjual: Penjual.getPenjualByUsername(widget.jasa.usernamePenjual).image, namaPenjual: Penjual.getPenjualByUsername(widget.jasa.usernamePenjual).name, deskripsiDetailJasa: widget.jasa.deskripsiDetail)));
           },
           child: Padding(
             padding: const EdgeInsets.all(15.0),
@@ -51,7 +52,7 @@ class Default_JasaCardState extends State<DefaultJasaCard> {
                     child: LayoutBuilder(
                       builder: (context, size) {
                         return Image.network(
-                          widget.jasa.thumbnail,
+                          widget.jasa.image,
                           width: size.maxWidth,
                           height: size.maxWidth,
                           fit: BoxFit.cover,
@@ -66,7 +67,7 @@ class Default_JasaCardState extends State<DefaultJasaCard> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(widget.jasa.judul, style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12), overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.start,),
+                      Text(widget.jasa.title, style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12), overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.start,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [

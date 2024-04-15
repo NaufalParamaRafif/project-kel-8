@@ -1,10 +1,28 @@
 class Jasa{
-  String thumbnail;
-  String judul;
+  int id;
+  String image;
+  String title;
+  String deskripsiDetail;
   String harga;
-  String gambarProfilePenjual;
-  String namaPenjual;
-  String deskripsiDetailJasa;
+  String slug;
+  String perkiraanWaktuPengerjaan;
+  String usernamePenjual;
+
+  static final List<Jasa> _allJasa = [
+    Jasa(id: 1, image: "https://picsum.photos/300", title: "Jasa Pembuatan Web Menggunakan MERN Stack, dan Flutter sebagai Aplikasi untuk END USERS", harga: "25.999", deskripsiDetail: 'Adalah sebuah jasa yang menawarkan Omaga ges, mantap sekali wajib dicoba', usernamePenjual: 'opalPackrama', perkiraanWaktuPengerjaan: "2 Minggu", slug: "test-1"),
+    Jasa(id: 2, image: "https://picsum.photos/301", title: "Jasa Menerjemahkan Bahasa China ke Indonesia", harga: "25.999", deskripsiDetail: 'Adalah sebuah jasa yang menawarkan Omaga ges, mantap sekali wajib dicoba', usernamePenjual: 'opalPackrama', perkiraanWaktuPengerjaan: "1 Minggu", slug: "test-2"),
+    Jasa(id: 3, image: "https://picsum.photos/302", title: "Jasa Membuat Logo", harga: "25.999", deskripsiDetail: 'Adalah sebuah jasa yang menawarkan Omaga ges, mantap sekali wajib dicoba', usernamePenjual: 'osamaladuniboss', perkiraanWaktuPengerjaan: "2 Minggu", slug: "test-3"),
+  ];
+
+  static List<Jasa> getAllJasa(){
+    return _allJasa;
+  }
+
+  static Jasa getJasaBySlug(String slug){
+    return _allJasa.firstWhere((jasa) => jasa.slug == slug);
+  }
   
-  Jasa({required this.thumbnail, required this.judul, required this.harga, required this.gambarProfilePenjual, required this.namaPenjual, required this.deskripsiDetailJasa});
+  Jasa({required this.id, required this.image, required this.title, required this.deskripsiDetail, required this.harga, required this.slug, required this.perkiraanWaktuPengerjaan, required this.usernamePenjual}){
+    _allJasa.add(Jasa(id: id, image: image, title: title, deskripsiDetail: deskripsiDetail, harga: harga, slug: slug, perkiraanWaktuPengerjaan: perkiraanWaktuPengerjaan, usernamePenjual: usernamePenjual));
+  }
 }

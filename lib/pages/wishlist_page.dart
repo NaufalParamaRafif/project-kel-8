@@ -11,10 +11,7 @@ class WishListPage extends StatefulWidget {
 }
 
 class _WishListPageState extends State<WishListPage> {
-  final List<Jasa> jasaDefault = [
-    Jasa(thumbnail: "https://picsum.photos/300", judul: "Jasa Pembuatan Web Menggunakan MERN Stack, dan Flutter sebagai Aplikasi untuk END USERS", harga: "25.999", gambarProfilePenjual: 'https://picsum.photos/312', namaPenjual: "Osama bin Laden", deskripsiDetailJasa: 'Adalah sebuah jasa yang menawarkan Omaga ges, mantap sekali wajib dicoba'),
-    Jasa(thumbnail: "https://picsum.photos/300", judul: "Jasa Pembuatan Web Menggunakan MERN Stack, dan Flutter sebagai Aplikasi untuk END USERS", harga: "25.999", gambarProfilePenjual: 'https://picsum.photos/312', namaPenjual: "Osama bin Laden", deskripsiDetailJasa: 'Adalah sebuah jasa yang menawarkan Omaga ges, mantap sekali wajib dicoba'),
-  ];
+  final List<Jasa> jasaDefault = Jasa.getAllJasa();
 
   @override
   Widget build(BuildContext context) {
