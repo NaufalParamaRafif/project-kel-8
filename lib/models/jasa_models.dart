@@ -22,7 +22,5 @@ class Jasa{
     return _allJasa.firstWhere((jasa) => jasa.slug == slug);
   }
   
-  Jasa({required this.id, required this.image, required this.title, required this.deskripsiDetail, required this.harga, required this.slug, required this.perkiraanWaktuPengerjaan, required this.usernamePenjual}){
-    _allJasa.add(Jasa(id: id, image: image, title: title, deskripsiDetail: deskripsiDetail, harga: harga, slug: slug, perkiraanWaktuPengerjaan: perkiraanWaktuPengerjaan, usernamePenjual: usernamePenjual));
-  }
+  Jasa({required this.id, required this.image, required this.title, required this.deskripsiDetail, required this.harga, required this.slug, required this.perkiraanWaktuPengerjaan, required this.usernamePenjual});
 }

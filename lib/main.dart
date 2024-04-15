@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:project_kelompok_8/pages/daftar_dengan_email_page.dart';
-import 'package:project_kelompok_8/pages/detail_penjual_page.dart';
 import 'package:project_kelompok_8/pages/kode_otp_page.dart';
 import 'package:project_kelompok_8/pages/login_dengan_email_page.dart';
 import 'package:project_kelompok_8/pages/login_page.dart';
 import 'package:project_kelompok_8/pages/main_page.dart';
 import 'package:project_kelompok_8/pages/notifications_page.dart';
-import 'package:project_kelompok_8/pages/post_page.dart';
 import 'package:project_kelompok_8/pages/profile_screen_page.dart';
 import 'package:project_kelompok_8/pages/seluruh_kategori_page.dart';
 import './pages/home_page.dart';

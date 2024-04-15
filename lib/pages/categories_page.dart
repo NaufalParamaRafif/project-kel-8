@@ -35,9 +35,9 @@ class CategoriesPage extends StatelessWidget {
                   ),
                   child: Image.network(listCategory[index]['image'].toString()),
                 ),
-                title: Text(listCategory[index]['title'].toString()),
-                subtitle: Text(listCategory[index]['subtitle'].toString()),
-                trailing: Icon(Icons.keyboard_arrow_right),
+                title: Text(listCategory[index]['name'].toString()),
+                subtitle: Text(listCategory[index]['caption'].toString()),
+                trailing: const Icon(Icons.keyboard_arrow_right),
               ),
             ),
           );

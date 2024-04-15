@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:project_kelompok_8/models/penjual_models.dart';
+import 'package:project_kelompok_8/pages/detail_penjual_page.dart';
+
+import './../models/jasa_models.dart';
 
 class PostPage extends StatelessWidget {
   static String nameRoute = '/post/page';
-  const PostPage({super.key, required this.thumbnail, required this.judul, required this.harga, required this.gambarProfilePenjual, required this.namaPenjual, required this.deskripsiDetailJasa});
-  final String thumbnail;
-  final String judul;
-  final String harga;
-  final String gambarProfilePenjual;
-  final String namaPenjual;
-  final String deskripsiDetailJasa;
+  PostPage({super.key, required this.jasa});
+  final Jasa jasa;
 
   @override
   //tesfsdzfdfhhfd
@@ -45,7 +44,7 @@ class PostPage extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Image.network(
-                thumbnail,
+                jasa.image,
                 width: MediaQuery.of(context).size.width,
                 height: 200,
                 fit: BoxFit.cover,
@@ -61,7 +60,7 @@ class PostPage extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          judul,
+                          jasa.title,
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w600,
@@ -80,31 +79,36 @@ class PostPage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 10,),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      ClipOval(
-                        child: CircleAvatar(
-                          child: Image(
-                            image: NetworkImage(gambarProfilePenjual),
-                            alignment: Alignment.center,
-                            height: double.infinity,
-                            width: double.infinity,
-                            fit: BoxFit.cover,
+                  InkWell(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (contex) =>
+                      DetailPenjualPage(usernamePenjual: jasa.usernamePenjual),
+                    )),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        ClipOval(
+                          child: CircleAvatar(
+                            child: Image(
+                              image: NetworkImage(Penjual.getPenjualByUsername(jasa.usernamePenjual).image),
+                              alignment: Alignment.center,
+                              height: double.infinity,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        namaPenjual,
-                        style: TextStyle(
-                          fontSize: 18,
+                        SizedBox(
+                          width: 10,
                         ),
-                      ),
-                    ],
+                        Text(
+                          Penjual.getPenjualByUsername(jasa.usernamePenjual).name,
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   SizedBox(height: 10,),
                   Table(
@@ -125,7 +129,7 @@ class PostPage extends StatelessWidget {
                             Text("Harga"),
                           ),
                           TableCell(child: 
-                            Text("Begadang"),
+                            Text(jasa.harga),
                           ),
                         ]
                       ),
@@ -135,7 +139,7 @@ class PostPage extends StatelessWidget {
                             Text("Perkiraan Waktu Pengerjaan"),
                           ),
                           TableCell(child: 
-                            Text("1 Minggu"),
+                            Text(jasa.perkiraanWaktuPengerjaan),
                           ),
                         ]
                       ),
@@ -143,7 +147,7 @@ class PostPage extends StatelessWidget {
                   ),
                   SizedBox(height: 10,),
                   Text(
-                    deskripsiDetailJasa,
+                    jasa.deskripsiDetail,
                     style: TextStyle(fontSize: 17),
                     textAlign: TextAlign.justify,
                   ),

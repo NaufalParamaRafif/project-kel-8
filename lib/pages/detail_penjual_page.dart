@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:project_kelompok_8/pages/home_page.dart';
+import 'package:project_kelompok_8/models/penjual_models.dart';
 
 class DetailPenjualPage extends StatefulWidget {
-  const DetailPenjualPage({super.key});
+  DetailPenjualPage({super.key, required this.usernamePenjual});
+  final String usernamePenjual;
 
   @override
   State<DetailPenjualPage> createState() => _DetailPenjualPageState();
@@ -12,6 +13,7 @@ class _DetailPenjualPageState extends State<DetailPenjualPage>{
 
   @override
   Widget build(BuildContext context) {
+    Penjual penjual = Penjual.getPenjualByUsername(widget.usernamePenjual);
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.white,
@@ -34,12 +36,12 @@ class _DetailPenjualPageState extends State<DetailPenjualPage>{
                 shape: BoxShape.circle,
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage('images/fotoorg.jpg')
+                  image: NetworkImage(penjual.image),
                 )
               )
             ),
-            title: Text('Naufal Parama Rafif', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 23),),
-            subtitle: Text('Berpengalaman selama 6 tahun fdhsjlkafhjdjkdshg sdjkfhdis cshfdjk df sjkafds jkcn vjkgds njdsnbjkfsd vcsjklhafljkd'),
+            title: Text(penjual.name, style: TextStyle(fontWeight: FontWeight.w600, fontSize: 23),),
+            subtitle: Text(penjual.keteranganSingkat),
             trailing: IconButton(onPressed: (){
               showModalBottomSheet(
                 enableDrag: true,

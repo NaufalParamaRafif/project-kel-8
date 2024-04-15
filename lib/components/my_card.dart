@@ -32,7 +32,7 @@ class Default_JasaCardState extends State<DefaultJasaCard> {
         color: Colors.white,
         child: InkWell(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => PostPage(thumbnail: widget.jasa.image, judul: widget.jasa.title, harga: widget.jasa.harga, gambarProfilePenjual: Penjual.getPenjualByUsername(widget.jasa.usernamePenjual).image, namaPenjual: Penjual.getPenjualByUsername(widget.jasa.usernamePenjual).name, deskripsiDetailJasa: widget.jasa.deskripsiDetail)));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => PostPage(jasa: widget.jasa,)));
           },
           child: Padding(
             padding: const EdgeInsets.all(15.0),

@@ -18,7 +18,5 @@ class Penjual {
     return _allPenjual.firstWhere((penjual) => penjual.username == username);
   }
 
-  Penjual({required this.id, required this.image, required this.name, required this.username, required this.email, required this.password, required this.keteranganSingkat, required this.keteranganDetail, required this.lokasi}){
-    _allPenjual.add(Penjual(id: id, image: image, name: name, username: username, email: email, password: password, keteranganSingkat: keteranganSingkat, keteranganDetail: keteranganDetail, lokasi: lokasi));
-  }
+  Penjual({required this.id, required this.image, required this.name, required this.username, required this.email, required this.password, required this.keteranganSingkat, required this.keteranganDetail, required this.lokasi});
 }

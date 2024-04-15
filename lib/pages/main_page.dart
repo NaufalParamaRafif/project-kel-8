@@ -20,7 +20,9 @@ class _MainPageState extends State<MainPage> {
     HomePage(),
     WishListPage(),
     CategoriesPage(),
-    DetailPenjualPage(),
+    Center(
+      child: Text("Belum ada Pesan masbro"),
+    ),
     ProfileScreenPage(),
   ];
 
