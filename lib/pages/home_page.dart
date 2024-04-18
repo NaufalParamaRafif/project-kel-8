@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final TextEditingController _searchController = TextEditingController();
-  final List<Jasa> jasaDefault = Jasa.getAllJasa();
+  var allJasa = Jasa();
 
   @override
   Widget build(BuildContext context) {
@@ -208,19 +208,41 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.black,
                 ),
               ),
-              GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: jasaDefault.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 6/9,
-                  crossAxisSpacing: 15,
-                  mainAxisSpacing: 15,
-                ),
-                itemBuilder: (context, index) 
-                  => DefaultJasaCard(jasa: jasaDefault[index])
-                ,
+              FutureBuilder(
+                future: allJasa.allJasa,
+                builder: (context, snapshot) {
+                  if(snapshot.connectionState == ConnectionState.waiting){
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if(snapshot.connectionState == ConnectionState.done){
+                    if(snapshot.hasData) {
+                      return GridView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: snapshot.data!.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 6/9,
+                          crossAxisSpacing: 15,
+                          mainAxisSpacing: 15,
+                        ),
+                        itemBuilder: (context, index) {
+                          return DefaultJasaCard(
+                            id: snapshot.data![index]['id'],
+                            image: snapshot.data![index]['image'].toString(),
+                            title: snapshot.data![index]['title'].toString(),
+                            harga: snapshot.data![index]['harga'].toString(),
+                          );
+                        },
+                      );
+                    } else {
+                      return Text("Tidak Tersedia");
+                    }
+                  } throw{
+                    Text("error")
+                  };
+                },
               ),
             ],
           ),

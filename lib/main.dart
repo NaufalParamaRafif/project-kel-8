@@ -7,9 +7,17 @@ import 'package:project_kelompok_8/pages/main_page.dart';
 import 'package:project_kelompok_8/pages/notifications_page.dart';
 import 'package:project_kelompok_8/pages/profile_screen_page.dart';
 import 'package:project_kelompok_8/pages/seluruh_kategori_page.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import './pages/home_page.dart';
 
-void main() => runApp(MyApp());
+Future<void> main() async {
+  await Supabase.initialize(
+    url: 'rahasia bosss',
+    anonKey: 'sementara gini dlu dahhh, ribet bat cuyyy',
+  );
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override

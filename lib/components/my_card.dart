@@ -5,21 +5,12 @@ import 'package:project_kelompok_8/pages/post_page.dart';
 
 import './../models/jasa_models.dart';
 
-class DefaultJasaCard extends StatefulWidget {
-  const DefaultJasaCard({super.key, required this.jasa});
-  final Jasa jasa;
-
-  @override
-  State<DefaultJasaCard> createState() => Default_JasaCardState();
-}
-
-class Default_JasaCardState extends State<DefaultJasaCard> {
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   Jasa jasa = widget.jasa;
-  // }
+class DefaultJasaCard extends StatelessWidget {
+  DefaultJasaCard({required this.id, required this.image, required this.title, required this.harga});
+  int id;
+  String image;
+  String harga;
+  String title;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +23,7 @@ class Default_JasaCardState extends State<DefaultJasaCard> {
         color: Colors.white,
         child: InkWell(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => PostPage(jasa: widget.jasa,)));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => PostPage(id: id)));
           },
           child: Padding(
             padding: const EdgeInsets.all(15.0),
@@ -52,7 +43,7 @@ class Default_JasaCardState extends State<DefaultJasaCard> {
                     child: LayoutBuilder(
                       builder: (context, size) {
                         return Image.network(
-                          widget.jasa.image,
+                          image,
                           width: size.maxWidth,
                           height: size.maxWidth,
                           fit: BoxFit.cover,
@@ -67,12 +58,12 @@ class Default_JasaCardState extends State<DefaultJasaCard> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(widget.jasa.title, style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12), overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.start,),
+                      Text(title, style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12), overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.start,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text("from ", style: TextStyle(color: Colors.black54, fontSize: 13),),
-                          Text(widget.jasa.harga, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),),
+                          Text(harga, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),),
                         ],
                       ),
                     ],

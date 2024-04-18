@@ -18,7 +18,7 @@ class _MainPageState extends State<MainPage> {
 
   List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    WishListPage(),
+    // WishListPage(),
     CategoriesPage(),
     Center(
       child: Text("Belum ada Pesan masbro"),
