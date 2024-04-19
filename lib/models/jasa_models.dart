@@ -31,7 +31,7 @@ class Jasa{
     return alljasa;
   }
 
-  Future<Map<String, dynamic>> getJasaById (int id) async {
+  Future<Map<String, dynamic>> getJasaById (String id) async {
     var jasa = await supabase.from('jasa').select('*').eq('id', id);
     return jasa[0];
   }

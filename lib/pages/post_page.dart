@@ -7,12 +7,13 @@ import './../models/jasa_models.dart';
 class PostPage extends StatelessWidget {
   static String nameRoute = '/post/page';
   PostPage({super.key, required this.id});
-  int id;
+  String id;
   var jasaDetail = Jasa();
 
   @override
   //tesfsdzfdfhhfd
   Widget build(BuildContext context) {
+    print(id);
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
@@ -95,7 +96,7 @@ class PostPage extends StatelessWidget {
                           height: 10,
                         ),
                         FutureBuilder(
-                          future: Penjual().getPenjualById(jasaDetailSupabase.data!['penjual_id'].toString()),
+                          future: Penjual().getPenjualById(jasaDetailSupabase.data!['id_penjual'].toString()),
                           builder: (context, penjualDetail) {
                             if(penjualDetail.connectionState == ConnectionState.waiting){
                               return Center(child: CircularProgressIndicator());
@@ -176,9 +177,12 @@ class PostPage extends StatelessWidget {
                           height: 10,
                         ),
                         Text(
-                          jasaDetailSupabase.data!['deskripsi_detail'],
+                          jasaDetailSupabase.data!['deskripsi'],
                           style: TextStyle(fontSize: 17),
-                          textAlign: TextAlign.justify,
+                          textAlign: TextAlign.left,
+                        ),
+                        SizedBox(
+                          height: 50,
                         ),
                       ],
                     ),

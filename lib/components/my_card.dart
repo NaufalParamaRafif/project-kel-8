@@ -7,7 +7,7 @@ import './../models/jasa_models.dart';
 
 class DefaultJasaCard extends StatelessWidget {
   DefaultJasaCard({required this.id, required this.image, required this.title, required this.harga});
-  int id;
+  String id;
   String image;
   String harga;
   String title;
