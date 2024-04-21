@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
-import 'package:project_kelompok_8/models/penjual_models.dart';
+import 'package:project_kelompok_8/pages/detail_penjual_page.dart';
 import 'package:project_kelompok_8/pages/post_page.dart';
-
-import './../models/jasa_models.dart';
+import 'package:project_kelompok_8/providers/all_jasa.dart';
+import 'package:provider/provider.dart';
 
 class DefaultJasaCard extends StatelessWidget {
-  DefaultJasaCard({required this.id, required this.image, required this.title, required this.harga});
-  String id;
-  String image;
-  String harga;
-  String title;
+  DefaultJasaCard({required this.id, required this.idPenjual});
+  final String id;
+  final String idPenjual;
 
   @override
   Widget build(BuildContext context) {
+    final jasaProvider = Provider.of<AllJasa>(context);
+    final currentjasaProvider = jasaProvider.getPenjualByIdFromLocal(id);
+    if(currentjasaProvider == null){
+      jasaProvider.getJasaByIdFromSupabase(id);
+    }
     return Container(
       height: 240,
       width: 160,
@@ -21,9 +24,12 @@ class DefaultJasaCard extends StatelessWidget {
         elevation: 5,
         surfaceTintColor: Colors.transparent,
         color: Colors.white,
-        child: InkWell(
+        child: 
+        (currentjasaProvider == null) ?
+        Center(child: CircleAvatar(),) :
+        InkWell(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => PostPage(id: id)));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => PostPage(jasaModel: currentjasaProvider, idPenjual: idPenjual,)));
           },
           child: Padding(
             padding: const EdgeInsets.all(15.0),
@@ -43,7 +49,7 @@ class DefaultJasaCard extends StatelessWidget {
                     child: LayoutBuilder(
                       builder: (context, size) {
                         return Image.network(
-                          image,
+                          currentjasaProvider.image,
                           width: size.maxWidth,
                           height: size.maxWidth,
                           fit: BoxFit.cover,
@@ -58,12 +64,12 @@ class DefaultJasaCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(title, style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12), overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.start,),
+                      Text(currentjasaProvider.title, style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12), overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.start,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text("from ", style: TextStyle(color: Colors.black54, fontSize: 13),),
-                          Text(harga, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),),
+                          Text(currentjasaProvider.harga.toString(), style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),),
                         ],
                       ),
                     ],

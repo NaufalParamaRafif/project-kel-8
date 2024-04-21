@@ -3,16 +3,15 @@ import 'package:project_kelompok_8/models/category_models.dart';
 import '../supabase/supabasesss.dart';
 
 class AllCategory with ChangeNotifier{
-  List<CategoryModel> allCategory = [];
-  
-  AllCategory(){
-    getAllCategoryFromSupabase();
-  }
+  List<CategoryModel> _allCategory = [];
+
+  List<CategoryModel> get allCategory => _allCategory;
   
   Future<void> getAllCategoryFromSupabase () async {
     var allCategoryFromSupabase = await supabase.from('category').select('*');
+    List<CategoryModel> allCategoryList = [];
     for (var eachCategory in allCategoryFromSupabase) {
-      allCategory.add(
+      allCategoryList.add(
         CategoryModel(
           id: eachCategory['id'],
           image: eachCategory['image'],
@@ -21,6 +20,7 @@ class AllCategory with ChangeNotifier{
         ),
       );
     }
+    _allCategory = allCategoryList;
     notifyListeners();
   }
 }

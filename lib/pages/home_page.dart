@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:project_kelompok_8/models/jasa_models.dart';
+import 'package:project_kelompok_8/providers/all_jasa.dart';
+import 'package:provider/provider.dart';
 import './../components/my_recommended_card.dart';
 import '../components/my_card.dart';
 import './notifications_page.dart';
 
 class HomePage extends StatefulWidget {
   static String nameRoute = '/homepage';
-  const HomePage({Key? key});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -14,10 +15,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final TextEditingController _searchController = TextEditingController();
-  var allJasa = Jasa();
-
   @override
   Widget build(BuildContext context) {
+    final jasaProvider = Provider.of<AllJasa>(context);
+    final allJasaProvider = jasaProvider.allJasa;
+    if(allJasaProvider.isEmpty){
+      jasaProvider.getAllJasaFromSupabase();
+    }
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
@@ -208,40 +212,25 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.black,
                 ),
               ),
-              FutureBuilder(
-                future: allJasa.allJasa,
-                builder: (context, snapshot) {
-                  if(snapshot.connectionState == ConnectionState.waiting){
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else if(snapshot.connectionState == ConnectionState.done){
-                    if(snapshot.hasData) {
-                      return GridView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: snapshot.data!.length,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: 6/9,
-                          crossAxisSpacing: 15,
-                          mainAxisSpacing: 15,
-                        ),
-                        itemBuilder: (context, index) {
-                          return DefaultJasaCard(
-                            id: snapshot.data![index]['id'],
-                            image: snapshot.data![index]['image'].toString(),
-                            title: snapshot.data![index]['title'].toString(),
-                            harga: snapshot.data![index]['harga'].toString(),
-                          );
-                        },
-                      );
-                    } else {
-                      return Text("Tidak Tersedia");
-                    }
-                  } throw{
-                    Text("error")
-                  };
+              (allJasaProvider.isEmpty) ? 
+              Center(
+                child: CircularProgressIndicator(),
+              ) :
+              GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: allJasaProvider.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 6/9,
+                  crossAxisSpacing: 15,
+                  mainAxisSpacing: 15,
+                ),
+                itemBuilder: (context, index) {
+                  return DefaultJasaCard(
+                    id: allJasaProvider[index].id,
+                    idPenjual: allJasaProvider[index].idPenjual.toString(),
+                  );
                 },
               ),
             ],
