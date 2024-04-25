@@ -9,6 +9,7 @@ class AllCategory with ChangeNotifier{
   
   Future<void> getAllCategoryFromSupabase () async {
     var allCategoryFromSupabase = await supabase.from('category').select('*');
+    print('getfrom supabase');
     List<CategoryModel> allCategoryList = [];
     for (var eachCategory in allCategoryFromSupabase) {
       allCategoryList.add(

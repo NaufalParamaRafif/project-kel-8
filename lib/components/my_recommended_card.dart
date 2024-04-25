@@ -64,7 +64,7 @@ class _RecommendedJasaCardState extends State<RecommendedJasaCard> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Jasa freelancer web menggunakan flutter eh tapi boong hahahaha, bingung males bat gw mau nagapin bingung males bat gw mau nagapin", style: TextStyle(fontWeight: FontWeight.w300, fontSize: 14), overflow: TextOverflow.ellipsis, maxLines: 3,),
+                    Text("Jasa membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat membuat ", style: TextStyle(fontWeight: FontWeight.w300, fontSize: 14), overflow: TextOverflow.ellipsis, maxLines: 3,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [

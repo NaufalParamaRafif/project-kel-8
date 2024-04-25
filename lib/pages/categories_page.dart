@@ -14,7 +14,7 @@ class CategoriesPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.white,
-        backgroundColor: Color(0xFF33691E),
+        backgroundColor: Color.fromARGB(255, 55, 130, 94),
         leading: IconButton(onPressed: () {
           Navigator.pop(context);
         }, icon: Icon(Icons.arrow_back_ios)),

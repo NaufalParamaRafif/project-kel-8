@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: BoxDecoration(
-            color: Colors.green,
+            color: Color.fromARGB(255, 55, 130, 94),
           ),
         ),
         title: Row(

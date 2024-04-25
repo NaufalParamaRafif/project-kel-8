@@ -29,7 +29,9 @@ class AllJasa with ChangeNotifier {
     notifyListeners();
   }
 
-   JasaModel? getPenjualByIdFromLocal (String id) {
+  
+
+  JasaModel? getPenjualByIdFromLocal (String id) {
     for (var eachJasa in allJasa) {
       if(eachJasa.id == id) {
         return eachJasa;
@@ -40,6 +42,7 @@ class AllJasa with ChangeNotifier {
 
   Future<void> getJasaByIdFromSupabase (String id) async {
     var jasaFromSupabase = await supabase.from('jasa').select('*').eq('id', id);
+    // var jasaFromSupabase = await supabase.from('jasa').select('id, team_name, users(id, name)');
     var singleJasaFromSupabase = jasaFromSupabase[0];
     JasaModel singleJasaModelFromSupabase = JasaModel(
       id: singleJasaFromSupabase['id'],

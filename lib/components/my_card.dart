@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
-import 'package:project_kelompok_8/pages/detail_penjual_page.dart';
 import 'package:project_kelompok_8/pages/post_page.dart';
 import 'package:project_kelompok_8/providers/all_jasa.dart';
 import 'package:provider/provider.dart';
