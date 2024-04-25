@@ -1,28 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
-import 'package:project_kelompok_8/models/penjual_models.dart';
 import 'package:project_kelompok_8/pages/post_page.dart';
+import 'package:project_kelompok_8/providers/all_jasa.dart';
+import 'package:provider/provider.dart';
 
-import './../models/jasa_models.dart';
-
-class DefaultJasaCard extends StatefulWidget {
-  const DefaultJasaCard({super.key, required this.jasa});
-  final Jasa jasa;
-
-  @override
-  State<DefaultJasaCard> createState() => Default_JasaCardState();
-}
-
-class Default_JasaCardState extends State<DefaultJasaCard> {
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   Jasa jasa = widget.jasa;
-  // }
+class DefaultJasaCard extends StatelessWidget {
+  DefaultJasaCard({required this.id, required this.idPenjual});
+  final String id;
+  final String idPenjual;
 
   @override
   Widget build(BuildContext context) {
+    final jasaProvider = Provider.of<AllJasa>(context);
+    final currentjasaProvider = jasaProvider.getPenjualByIdFromLocal(id);
+    if(currentjasaProvider == null){
+      jasaProvider.getJasaByIdFromSupabase(id);
+    }
     return Container(
       height: 240,
       width: 160,
@@ -30,9 +23,12 @@ class Default_JasaCardState extends State<DefaultJasaCard> {
         elevation: 5,
         surfaceTintColor: Colors.transparent,
         color: Colors.white,
-        child: InkWell(
+        child: 
+        (currentjasaProvider == null) ?
+        Center(child: CircleAvatar(),) :
+        InkWell(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => PostPage(jasa: widget.jasa,)));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => PostPage(jasaModel: currentjasaProvider, idPenjual: idPenjual,)));
           },
           child: Padding(
             padding: const EdgeInsets.all(15.0),
@@ -52,7 +48,7 @@ class Default_JasaCardState extends State<DefaultJasaCard> {
                     child: LayoutBuilder(
                       builder: (context, size) {
                         return Image.network(
-                          widget.jasa.image,
+                          currentjasaProvider.image,
                           width: size.maxWidth,
                           height: size.maxWidth,
                           fit: BoxFit.cover,
@@ -67,12 +63,12 @@ class Default_JasaCardState extends State<DefaultJasaCard> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(widget.jasa.title, style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12), overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.start,),
+                      Text(currentjasaProvider.title, style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12), overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.start,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text("from ", style: TextStyle(color: Colors.black54, fontSize: 13),),
-                          Text(widget.jasa.harga, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),),
+                          Text(currentjasaProvider.harga.toString(), style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),),
                         ],
                       ),
                     ],

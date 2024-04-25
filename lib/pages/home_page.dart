@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:project_kelompok_8/models/jasa_models.dart';
+import 'package:project_kelompok_8/providers/all_jasa.dart';
+import 'package:provider/provider.dart';
 import './../components/my_recommended_card.dart';
 import '../components/my_card.dart';
 import './notifications_page.dart';
 
 class HomePage extends StatefulWidget {
   static String nameRoute = '/homepage';
-  const HomePage({Key? key});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -14,15 +15,18 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final TextEditingController _searchController = TextEditingController();
-  final List<Jasa> jasaDefault = Jasa.getAllJasa();
-
   @override
   Widget build(BuildContext context) {
+    final jasaProvider = Provider.of<AllJasa>(context);
+    final allJasaProvider = jasaProvider.allJasa;
+    if(allJasaProvider.isEmpty){
+      jasaProvider.getAllJasaFromSupabase();
+    }
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: BoxDecoration(
-            color: Colors.green,
+            color: Color.fromARGB(255, 55, 130, 94),
           ),
         ),
         title: Row(
@@ -208,19 +212,26 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.black,
                 ),
               ),
+              (allJasaProvider.isEmpty) ? 
+              Center(
+                child: CircularProgressIndicator(),
+              ) :
               GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: jasaDefault.length,
+                itemCount: allJasaProvider.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   childAspectRatio: 6/9,
                   crossAxisSpacing: 15,
                   mainAxisSpacing: 15,
                 ),
-                itemBuilder: (context, index) 
-                  => DefaultJasaCard(jasa: jasaDefault[index])
-                ,
+                itemBuilder: (context, index) {
+                  return DefaultJasaCard(
+                    id: allJasaProvider[index].id,
+                    idPenjual: allJasaProvider[index].idPenjual.toString(),
+                  );
+                },
               ),
             ],
           ),

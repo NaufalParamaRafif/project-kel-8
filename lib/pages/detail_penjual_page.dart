@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:project_kelompok_8/models/penjual_models.dart';
+import 'package:project_kelompok_8/providers/all_penjual.dart';
+import 'package:provider/provider.dart';
 
-class DetailPenjualPage extends StatefulWidget {
-  DetailPenjualPage({super.key, required this.usernamePenjual});
-  final String usernamePenjual;
-
-  @override
-  State<DetailPenjualPage> createState() => _DetailPenjualPageState();
-}
-
-class _DetailPenjualPageState extends State<DetailPenjualPage>{
+class DetailPenjualPage extends StatelessWidget {
+  DetailPenjualPage({required this.id});
+  final String id;
 
   @override
   Widget build(BuildContext context) {
-    Penjual penjual = Penjual.getPenjualByUsername(widget.usernamePenjual);
+    final penjualProvider = Provider.of<AllPenjual>(context);
+    final currentPenjualProvider = penjualProvider.getPenjualByIdFromLocal(id);
+    if(currentPenjualProvider == null){
+      penjualProvider.getPenjualByIdFromSupabase(id);
+    }
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.white,
@@ -23,7 +22,11 @@ class _DetailPenjualPageState extends State<DetailPenjualPage>{
         }, icon: Icon(Icons.arrow_back_ios)),
         title: Text("Detail Penjual"),
       ),
-      body: ListView(
+      body: RefreshIndicator(
+        child: 
+        (currentPenjualProvider == null) ?
+        Center(child: CircularProgressIndicator(),) : 
+        ListView(
         children: [
           ListTile(
             contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
@@ -36,12 +39,12 @@ class _DetailPenjualPageState extends State<DetailPenjualPage>{
                 shape: BoxShape.circle,
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: NetworkImage(penjual.image),
+                  image: NetworkImage(currentPenjualProvider.image),
                 )
               )
             ),
-            title: Text(penjual.name, style: TextStyle(fontWeight: FontWeight.w600, fontSize: 23),),
-            subtitle: Text(penjual.keteranganSingkat),
+            title: Text(currentPenjualProvider.name, style: TextStyle(fontWeight: FontWeight.w600, fontSize: 23),),
+            subtitle: Text(currentPenjualProvider.keteranganSingkat),
             trailing: IconButton(onPressed: (){
               showModalBottomSheet(
                 enableDrag: true,
@@ -53,6 +56,7 @@ class _DetailPenjualPageState extends State<DetailPenjualPage>{
           ),
         ],
       ),
+      onRefresh: () => penjualProvider.getPenjualByIdFromSupabase(id),)
     );
   }
 }
