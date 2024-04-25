@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:project_kelompok_8/components/my_buttons.dart';
-import 'package:project_kelompok_8/components/my_input_text.dart';
+import './../components/my_buttons.dart';
+import './../components/my_input_text.dart';
 
-class DaftarEmail extends StatelessWidget {
-  const DaftarEmail({super.key});
+class LoginDenganEmailPage extends StatelessWidget {
+  static String nameRoute = '/login/email';
+  const LoginDenganEmailPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,9 @@ class DaftarEmail extends StatelessWidget {
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             icon: Icon(
               Icons.arrow_back_rounded,
               size: 40,
@@ -41,12 +44,11 @@ class DaftarEmail extends StatelessWidget {
                 borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
               ),
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 40),
+                padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 40),
                 child: Column(
                   children: [
                     Text(
-                      'Daftar',
+                      'Masuk',
                       style: TextStyle(
                           fontSize: 35,
                           color: Color.fromARGB(255, 55, 130, 94),
@@ -55,15 +57,15 @@ class DaftarEmail extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 4 / 100,
                     ),
-                    inputEmail(),
+                    InputEmail(),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 4 / 100,
                     ),
-                    inputPassword(),
+                    InputPassword(),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 4 / 100,
                     ),
-                    DaftarButton(),
+                    MasukButton(),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 4 / 100,
                     ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import './../pages/kode_otp_page.dart';
+import './../pages/login_dengan_email_page.dart';
 
 class TelephoneButton extends StatelessWidget {
   const TelephoneButton({super.key});
@@ -48,7 +50,9 @@ class EmailButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginDenganEmailPage()),);
+      },
       child: Ink(
         child: Container(
           decoration: BoxDecoration(
@@ -134,7 +138,9 @@ class DaftarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const KodeOTPPage()),);
+      },
       child: Ink(
         child: Container(
           decoration: BoxDecoration(
@@ -177,9 +183,41 @@ class KirimButton extends StatelessWidget {
                 child: Text(
               'Kirim',
               style: TextStyle(
-                  fontSize: 22,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500),
+                fontSize: 22,
+                color: Colors.white,
+                fontWeight: FontWeight.w500),
+            )),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class MasukButton extends StatelessWidget {
+  const MasukButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, KodeOTPPage.nameRoute);
+      },
+      child: Ink(
+        child: Container(
+          decoration: BoxDecoration(
+            color: Color.fromARGB(255, 55, 130, 94),
+            borderRadius: BorderRadius.all(Radius.circular(8)),
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 8),
+            child: Center(
+                child: Text(
+              'Masuk',
+              style: TextStyle(
+                fontSize: 22,
+                color: Colors.white,
+                fontWeight: FontWeight.w500),
             )),
           ),
         ),
