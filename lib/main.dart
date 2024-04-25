@@ -16,8 +16,8 @@ import './pages/home_page.dart';
 
 Future<void> main() async {
   await Supabase.initialize(
-    url: 'https://olhdegellrutwbkjhxlk.supabase.co',
-    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9saGRlZ2VsbHJ1dHdia2poeGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTMzNzQ2NjYsImV4cCI6MjAyODk1MDY2Nn0.tIYmWZ5mYWwc1qd_2rrBpPqUdYxJy0mT-QbI6JigmBg',
+    url: 'lupa',
+    anonKey: 'alamak',
   );
 
   runApp(MyApp());
